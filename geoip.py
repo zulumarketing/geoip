@@ -117,7 +117,7 @@ def geo_ip_lookup(ip=None):
     locale = request.accept_languages.best_match(app.config['LOCALES'])
     ip = request.remote_addr if ip is None else ip
     location = get_location(locale, ip)
-    if location is not None and any(value for key, value in location.items() if key != 'locale'):
+    if location is not None:
         response = jsonify({'ok': True, 'res': location})
     else:
         response = jsonify({'ok': False, 'res': 'Not Found'})
