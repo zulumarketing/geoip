@@ -3,7 +3,7 @@
 geoip-service
 ~~~~~~~~~~~~~
 
-The MIT License (MIT)
+A simple, free GeoIP REST endpoint.
 
 Copyright (c) 2015 Zulu Marketing
 
@@ -70,7 +70,7 @@ def jsonp(fn):
     return decorated_function
 
 
-def get_subdivision(row, locale, all=False):
+def get_subdivision(locale, row, all=False):
     if all is False:
         subdivision = row.subdivisions.most_specific        
         return {'name': subdivision.names.get(locale, subdivision.name),
@@ -82,7 +82,7 @@ def get_subdivision(row, locale, all=False):
 
 
 @cache.memoize(120)
-def get_location(ip, locale):
+def get_location(locale, ip):
     """
     Retrieves the location of a given IP address from a MaxMind GeoIP database.
 
@@ -97,8 +97,8 @@ def get_location(ip, locale):
                                                    row.location.__dict__.items())}
     location.update(locale=locale,
                     city={'name': row.city.names.get(locale, row.city.name), },
-                    subdivision=get_subdivision(row, locale),
-                    subdivisions=get_subdivision(row, locale, all=True),
+                    subdivision=get_subdivision(locale, row),
+                    subdivisions=get_subdivision(locale, row, all=True),
                     postal_code=row.postal.code,
                     country={'name': row.country.names.get(locale, row.country.name),
                              'abbr': row.country.iso_code, },
@@ -116,7 +116,7 @@ def geo_ip_lookup(ip=None):
     """
     locale = request.accept_languages.best_match(app.config['LOCALES'])
     ip = request.remote_addr if ip is None else ip
-    location = get_location(ip, locale)
+    location = get_location(locale, ip)
     if location is not None and any(value for key, value in location.items() if key != 'locale'):
         response = jsonify({'ok': True, 'res': location})
     else:
