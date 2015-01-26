@@ -52,6 +52,7 @@ cache.init_app(app)
 
 reader = database.Reader(os.path.abspath(app.config['GEOIP_DB']))
 
+
 def jsonp(fn):
     """
     Wraps JSON-ified output for JSONP requests.
@@ -83,7 +84,10 @@ def get_subdivision(row, locale, all=False):
 @cache.memoize(120)
 def get_location(ip, locale):
     """
-    Retrieves the location of a given IP address from the MaxMind GeoIP database
+    Retrieves the location of a given IP address from a MaxMind GeoIP database.
+
+    This product includes GeoLite2 data created by MaxMind, available from
+    `<http://www.maxmind.com>`_.
     """
     try:
         row = reader.city(ip)
