@@ -38,7 +38,7 @@ from geoip2 import database
 from geoip2.errors import AddressNotFoundError
 
 cache = Cache(config={'CACHE_TYPE': 'redis',
-                      'CACHE_REDIS_HOST': 'localhost', })
+                      'CACHE_REDIS_HOST': os.environ.get("REDIS_PORT_6379_TCP_ADDR", "localhost"), })
 
 app = Flask(__name__)
 
