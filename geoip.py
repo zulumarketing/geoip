@@ -29,6 +29,7 @@ THE SOFTWARE.
 import os
 
 from itertools import chain
+from functools import wraps
 
 from flask import Flask, Response
 from flask import request, jsonify, abort, current_app
