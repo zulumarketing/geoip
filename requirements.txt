@@ -3,3 +3,4 @@ Flask-Cache
 geoip2
 redis
 gunicorn
+eventlet
