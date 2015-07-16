@@ -3,15 +3,10 @@ python:
   - "3.4"
 services:
   - redis
-env:
-  global:
-    - secure: "WqAPeYnZcNh0bDRtvlVx+0Y1KSv2ivH6gRmyV27MQ4K/KCU+ow/rIGWwDe+o36WKXIqrieBBqpI45wzCvfEG8XwrRANGRPk22cDj28aZGo1PQgiqhwIF5CDpgeOoKy2erCUGMsvqer13HXd5hCBtS9KNs/jg3jzVMAKbd5Vq+ws="
 install:
   - pip install .
   - pip install -r requirements.txt
   - pip install nose coverage
-before_script:
-  - "./get-mmdb.sh 20150714 > GeoIP2-City.mmdb"
 script:
   - nosetests --with-coverage --cover-package=geoip
   - coverage report -m

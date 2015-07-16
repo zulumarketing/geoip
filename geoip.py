@@ -31,8 +31,7 @@ import os
 from itertools import chain
 from functools import wraps
 
-from flask import Flask, Response
-from flask import request, jsonify, current_app
+from flask import Flask, request, jsonify, current_app
 from flask.ext.cache import Cache
 
 from geoip2 import database
@@ -82,8 +81,7 @@ def get_subdivision(locale, row, all=False):
                 for subdivision in row.subdivisions]
 
 
-@cache.memoize(120)
-def get_location(locale, ip) -> dict:
+def get_location(locale, ip):
     """
     Retrieves the location of a given IP address from a MaxMind GeoIP database.
 
@@ -111,13 +109,14 @@ def get_location(locale, ip) -> dict:
 @app.route('/')
 @app.route('/<ip>/')
 @jsonp
-def geo_ip_lookup(ip=None) -> Response:
+def geo_ip_lookup(ip=None):
     """
     GeoIP lookup handler.
     """
+    get_location_ = cache.memoize(120)(get_location)
     locale = request.accept_languages.best_match(app.config['LOCALES'])
     ip = request.remote_addr if ip is None else ip
-    location = get_location(locale, ip)
+    location = get_location_(locale, ip)
     if location is not None:
         response = jsonify({'ok': True, 'res': location})
     else:
