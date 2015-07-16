@@ -11,7 +11,7 @@ install:
   - pip install -r requirements.txt
   - pip install nose coverage
 before_script:
-  - ./get-mmdb.sh 20150714 $MAX_MIND_LICENSE_KEY
+  - ./get-mmdb.sh 20150714
 script:
   - nosetests --with-coverage --cover-package=geoip
   - coverage report -m

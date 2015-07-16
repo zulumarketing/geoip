@@ -1,7 +1,5 @@
 #!/bin/bash
 
-DATE="$1"
-KEY="$2"
-URL="https://www.maxmind.com/app/geoip_download?edition_id=GeoIP2-City&date=$DATE&suffix=tar.gz&license_key=$KEY"
+URL="https://www.maxmind.com/app/geoip_download?edition_id=GeoIP2-City&date=$1&suffix=tar.gz&license_key=$MAX_MIND_LICENSE_KEY"
 
-curl -s $URL | tar --to-stdout -xzf - "GeoIP2-City_$DATE/GeoIP2-City.mmdb"
+curl -s $URL | tar --to-stdout -xzf - "GeoIP2-City_$1/GeoIP2-City.mmdb"
