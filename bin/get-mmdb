@@ -5,6 +5,7 @@ case "$1" in
         domain="geolite.maxmind.com"
         path="download/geoip/database/GeoLite2-City.mmdb.gz"
         URL="http://$domain/$path"
+        >&2 echo "get-mmdb: loading free database"
         exec curl -s $URL | gunzip;;
     "commerial")
         KEY="$2"
@@ -13,9 +14,10 @@ case "$1" in
         path="app/geoip_download"
         args="edition_id=GeoIP2-City&date=$DATE&suffix=tar.gz&license_key=$KEY"
         URL="https://$domain/$path?$args"
+        >&2 echo "get-mmdb: loading commercial database"
         exec curl -s $URL \
             | tar --to-stdout -xzf - "GeoIP2-City_$DATE/GeoIP2-City.mmdb";;
     *)
-        echo "get-mmdb: usage: [free | commercial <license_key> ]"
+        >&2 echo "get-mmdb: usage: [free | commercial <license_key> ]"
         exit 1;;
 esac

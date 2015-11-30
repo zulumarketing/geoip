@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
+
 from setuptools import setup
 
 TOP = os.path.dirname(os.path.abspath(__file__))
