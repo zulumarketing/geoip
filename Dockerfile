@@ -1,6 +1,7 @@
+# heropunch/geoip-service
 FROM gliderlabs/alpine:3.2
 MAINTAINER Carlos Killpack <carlos@infinite.ai>
-ENV GEOIP_DB /srv/GeoIP2-City.mmdb
+ENV GEOIP_DB /srv/GeoIP2.mmdb
 RUN mkdir /srv
 WORKDIR /srv
 COPY src/ ./

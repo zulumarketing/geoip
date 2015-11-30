@@ -7,7 +7,7 @@ python:
 services:
   - redis
 before_install:
-  - curl -s https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz | gunzip > src/GeoIP-City.mmdb
+  - curl -s https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz | gunzip > src/GeoIP2.mmdb
 install:
   - cd src
   - pip install .
