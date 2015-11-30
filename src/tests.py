@@ -12,10 +12,8 @@ class TestGeoIPService(TestCase):
                      "146.40.46.177": "San Ramon",
                      "132.125.225.179": "Fort Huachuaca",
                      "150.158.81.32": "Kortrijk",
-                     "197.183.230.56": "Nairobi",
                      "34.105.31.180": "Houston",
-                     "145.76.102.22": "Enschede",
-                     "201.73.201.226": "Teixeira"}
+                     "145.76.102.22": "Enschede"}
 
     def test_get_location(self):
         for ip, location in self.ipv4.items():

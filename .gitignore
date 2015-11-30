@@ -1,7 +1,7 @@
 # Local
 .*.swp
 .DS_Store
-GeoIP2-City.mmdb
+GeoIP2.mmdb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
