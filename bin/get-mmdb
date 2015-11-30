@@ -7,7 +7,7 @@ case "$1" in
         URL="http://$domain/$path"
         >&2 echo "get-mmdb: loading free database"
         exec curl -s $URL | gunzip;;
-    "commerial")
+    "commercial")
         KEY="$2"
         DATE="`date -d "last tuesday" +%Y%m%d`"
         domain="www.maxmind.com"
