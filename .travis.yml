@@ -1,11 +1,16 @@
 language: python
 python:
+  - "2.7"
   - "3.4"
+  - "3.5"
+  - "nightly"
 services:
   - redis
+before_install:
+  - curl -s https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz | gunzip > src/GeoIP-City.mmdb
 install:
+  - cd src
   - pip install .
-  - pip install -r requirements.txt
   - pip install nose coverage
 script:
   - nosetests --with-coverage --cover-package=geoip
@@ -13,3 +18,7 @@ script:
 after_success:
   - pip install coveralls
   - coveralls
+matrix:
+  allow_failures:
+    - python: "2.7"
+    - python: "nightly"
