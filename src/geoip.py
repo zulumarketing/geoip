@@ -41,7 +41,7 @@ def jsonp(fn):
     Wraps JSON-ified output for JSONP requests.
     """
     @wraps(fn)
-    def decorated_function(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         callback = request.args.get("callback", None)
         if callback is not None:
             data = fn(*args, **kwargs).data.decode()
@@ -51,7 +51,7 @@ def jsonp(fn):
             return current_app.response_class(content, mimetype=mimetype)
         else:
             return fn(*args, **kwargs)
-    return decorated_function
+    return wrapper
 
 
 def get_subdivision(locale, row, all=False):
