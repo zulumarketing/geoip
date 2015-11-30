@@ -8,15 +8,18 @@ A simple, free GeoIP REST endpoint.
 
 ```sh
 $ docker pull heropunch/geoip-service
-$ # Load GeoLite2-City
+# Load GeoLite2-City
 $ docker run -d heropunch/geoip-service free
-$ # Load GeoIP-City (requires a license key)
+# Load GeoIP-City (requires a license key)
 $ docker run -d heropunch/geoip-service commercial $license_key
+# Caching is enabled by linking to a container running `redis-server`
+$ docker run -d --name redis heropunch/redis-server
+$ docker run -d --link redis:redis heropunch/geoip-service free
 ```
 
 ### API
 
-`geoip-service` support IPv4 and IPv6 addresses.
+`geoip-service` supports IPv4 and IPv6 addresses.
 
 ```sh
 $ curl http://geoip-service/113.106.129.229/
