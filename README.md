@@ -1,3 +1,4 @@
+[![Docker Repository on Quay](https://quay.io/repository/heropunch/geoip-service/status)](https://quay.io/repository/heropunch/geoip-service)
 [![Travis CI](https://travis-ci.org/heropunch/geoip-service.svg?branch=master)](https://travis-ci.org/heropunch/geoip-service)
 
 ### geoip-service
