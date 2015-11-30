@@ -10,7 +10,7 @@ class TestGeoIPService(TestCase):
         self.ipv4 = {"136.39.103.199": "Dearborn",
                      "113.106.129.229": "Guangzhou",
                      "146.40.46.177": "San Ramon",
-                     "132.125.225.179": "Sierra Vista",
+                     "132.125.225.179": "Fort Huachuaca",
                      "150.158.81.32": "Kortrijk",
                      "197.183.230.56": "Nairobi",
                      "34.105.31.180": "Houston",
