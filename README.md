@@ -68,3 +68,4 @@ $ curl http://geoip-service/113.106.129.229/
     "user_type": null
   }
 }
+```
