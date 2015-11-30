@@ -43,7 +43,7 @@ cache = Cache(config={
                                        "localhost")
 })
 
-app = Flask(__name__)
+application = app = Flask(__name__)
 
 DEBUG = True if os.environ.get("DEBUG") == "True" else False
 LOCALES = {"de", "en", "es", "fr", "ja", "pt-BR", "ru", "zh-CN"}

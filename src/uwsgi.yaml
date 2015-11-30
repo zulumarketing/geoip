@@ -1,0 +1,10 @@
+uwsgi:
+    plugin: /usr/lib/uwsgi/python_plugin.so
+    shared-socket: :80
+    uid: nobody
+    http-socket: =0
+    wsgi-file: /srv/geoip.py
+    master: true
+    processes: 2
+    threads: 4
+    max-requests: 5000
