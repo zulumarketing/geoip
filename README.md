@@ -21,7 +21,7 @@ $ docker run -d --link redis:redis geoip free
 
 ### API
 
-`infiniteautomata/geoip` supports IPv4 and IPv6 addresses.
+`geoip` supports IPv4 and IPv6 addresses.
 
 ```sh
 $ curl http://geoip.ns/113.106.129.229/
