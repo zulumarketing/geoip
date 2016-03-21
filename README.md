@@ -1,22 +1,22 @@
-[![Docker Repository on Quay](https://quay.io/repository/heropunch/geoip-service/status)](https://quay.io/repository/heropunch/geoip-service)
-[![Travis CI](https://travis-ci.org/infinite-automata/geoip.svg?branch=master)](https://travis-ci.org/infinite-automata/geoip)
-
-### infiniteautomata/geoip
+### geoip
 
 A simple, free GeoIP REST endpoint.
 
 ### Usage
 
 ```sh
+# Build
+docker build -t geoip .
+
 # Load GeoLite2-City
-$ docker run -d quay.io/infiniteautomata/geoip free
+$ docker run -d geoip free
 
 # Load GeoIP-City (requires a license key)
-$ docker run -d quay.io/infiniteautomata/geoip commercial $license_key
+$ docker run -d geoip commercial $license_key
 
 # Caching is enabled by linking to a container running `redis-server`
-$ docker run -d --name redis heropunch/redis-server
-$ docker run -d --link redis:redis quay.io/infiniteautomata/geoip free
+$ docker run -d --name redis redis-server
+$ docker run -d --link redis:redis geoip free
 ```
 
 ### API
